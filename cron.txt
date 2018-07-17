@@ -1,0 +1,38 @@
+#01 22 11 3 * /usr/bin/php /srv/bin/console calendar:insert-test-users >> /home/logs/insert-test-users 2>&1
+
+0 2 * * * /usr/bin/php /srv/bin/console calendar:qnq_report > /home/logs/qnq_report.log 2>&1
+20 2 * * * /usr/bin/php /srv/bin/console calendar:accountEvent-move-from-yesterday > /home/logs/accountEvent-move-from-yesterday.log 2>&1
+30 2 * * * /usr/bin/php /srv/bin/console calendar:crm-calendar > /home/logs/crm-calendar.log 2>&1
+30 3 * * * /usr/bin/php /srv/bin/console calendar:lb-calendar > /home/logs/lb-calendar.log 2>&1
+35 3 * * * /usr/bin/php /srv/bin/console calendar:additional-submission > /home/logs/additional-submission.log 2>&1
+37 3 * * * /usr/bin/php /srv/bin/console calendar:content-calendar > /home/logs/content-calendar.log 2>&1
+39 3 * * * /usr/bin/php /srv/bin/console calendar:google-review-calendar > /home/logs/google-review-calendar.log 2>&1
+41 3 * * * /usr/bin/php /srv/bin/console calendar:stairways-to-heaven > /home/logs/stairways-to-heaven.log 2>&1
+49 3 * * * /usr/bin/php /srv/bin/console calendar:delete-accountEvents  > /home/logs/delete-accountEvents.log 2>&1
+50 3 * * * /usr/bin/php /srv/bin/console calendar:lb-distribution  > /home/logs/lb-distribution.log 2>&1
+10 4 * * * /usr/bin/php /srv/bin/console calendar:game-changer > /home/logs/game-changer.log 2>&1
+
+
+#PRODUCTION
+#01 22 11 3 * /usr/bin/php /srv/bin/console calendar:insert-users >> /home/logs/insert-users 2>&1
+#50 1 13 3 * /usr/bin/php /srv/bin/console calendar:user-events > /home/logs/user-events.log 2>&1
+
+0 2 * * * /usr/bin/php /srv/bin/console calendar:qnq_report > /home/logs/qnq_report.log 2>&1
+11 2 * * * /usr/bin/php /srv/bin/console calendar:accountEvent-move-from-yesterday > /home/logs/accountEvent-move-from-yesterday.log 2>&1
+16 2 * * * /usr/bin/php /srv/bin/console calendar:crm-calendar > /home/logs/crm-calendar.log 2>&1
+26 3 * * * /usr/bin/php /srv/bin/console calendar:lb-calendar > /home/logs/lb-calendar.log 2>&1
+36 3 * * * /usr/bin/php /srv/bin/console calendar:additional-submission > /home/logs/additional-submission.log 2>&1
+46 3 * * * /usr/bin/php /srv/bin/console calendar:content-calendar > /home/logs/content-calendar.log 2>&1
+56 3 * * * /usr/bin/php /srv/bin/console calendar:google-review-calendar > /home/logs/google-review-calendar.log 2>&1
+06 4 * * * /usr/bin/php /srv/bin/console calendar:stairways-to-heaven > /home/logs/stairways-to-heaven.log 2>&1
+15 4 * * * /usr/bin/php /srv/bin/console calendar:delete-accountEvents  > /home/logs/delete-accountEvents.log 2>&1
+16 4 * * * /usr/bin/php /srv/bin/console calendar:lb-distribution  > /home/logs/lb-distribution.log 2>&1
+0 5 * * * /usr/bin/php /srv/bin/console calendar:game-changer > /home/logs/game-changer.log 2>&1
+
+
+
+
+
+
+
+* * * * * echo "hello world" > /home/nikipenchev/test.out

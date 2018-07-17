@@ -1,0 +1,59 @@
+$this->output->enable_profiler(TRUE);
+
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/Nikolay86bg/symfony34.git
+git push -u origin master
+
+curl -x 192.168.8.115:3128 icanhazip.com
+curl -x 192.168.8.115:3128 httpbin.org/ip
+
+git remote show origin
+
+git remote set-url origin https://github.com/Nikolay86bg/symfony.git
+git remote set-url origin https://github.com/Nikolay86bg/symfony34.git
+-Change repository
+
+git config --list
+-show configurations
+
+git reset --hard HEAD
+
+git rm -r --cached myFolder
+-Deletes folder from repository (not local)
+
+ssh-keygen -t rsa -C "nikolay411locals@gmail.com"  //Generirane na ssh key
+
+git reset --hard HEAD && git pull --rebase origin master && composer install && yarn install && yarn build && ./bin/console doctrine:migrations:migrate -n
+
+git reset --hard HEAD && git pull --rebase origin master && composer install && yarn install && ./bin/console doctrine:migrations:migrate -n
+
+git checkout 696df9579934868319e2c95222d4cd272abd7fb2
+- Pull till specific commit (696df9579934868319e2c95222d4cd272abd7fb2 -- commit hash)
+
+git pull --rebase origin master
+
+php bin/console cache:warmup --env=prod
+
+sudo a2enmod rewrite
+- Activate rewrite mode for apache
+
+sudo a2ensite example.com.conf
+- Enable virtual host files for apache (needed when create virtual host files)
+
+#!/bin/sh
+rm -rfv ~/.PhpStorm201*/
+rm -rfv ~/.java/.userPrefs/jetbrains
+
+
+//Merging two branches
+git checkout dev_branch
+git pull --rebase origin master
+git push
+git checkout master
+git pull --rebase origin dev_branch
+git push origin master
+
+Активиране на изкуствен swap
+sudo swapon /var/swap.1

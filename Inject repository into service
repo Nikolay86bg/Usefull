@@ -1,0 +1,41 @@
+//За да може репозиторито да бъде директно инжектнато в сървиса:
+//За всеки сървис трябва да имаме и интерфейс
+
+***
+interface UserServiceInterface{
+  public function getUsername();
+  public function viewAll();
+}
+
+***
+class UserService implements UserServiceInterface
+{
+
+  private $entityManager;
+  private $userRepository;
+
+  public function __construct(EntityManager $entityManager, UserRepository $userRepository)
+  {
+    $this->entityManager = $entityManager;
+    $this->userRepository = $userRepository;
+  }
+
+  public function viewAll()
+  {
+    return $this->userRepository->findAll();
+  }
+}
+
+***
+class UserRepository extends \Doctrine\ORM\EntityRepository
+{
+  public function __construct(EntityManager $em, Mapping\ClassMetadata $metadata = null)
+  {
+    parent::__construct(
+      $em,
+      $metadata == null ?
+      new Mapping\ClassMetadata(User::class) :
+      $metadata
+    );
+  }
+}

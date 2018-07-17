@@ -1,0 +1,82 @@
+php app/console doctrine:database:create
+php app/console doctrine:database:drop --force
+-Drop all tables
+
+php app/console doctrine:schema:create
+-Finds all Entities, Reads Annotations, Creates all Tables
+
+php app/console doctrine:query:sql "SELECT * FROM yoda_event"
+-Execute query
+
+php app/console doctrine:schema:drop
+php app/console doctrine:schema:update
+php app/console doctrine:schema:update --dump-sql
+php app/console doctrine:schema:update --force
+-Update schema for all Tables, but NOT execute
+
+php app/console doctrine:schema:validate
+-Check Database schemas for errors
+
+php app/console doctrine:generate:entity <BundleName>
+-creates Doctrine entity
+
+php app/console doctrine:generate:entities <BundleName> --no-backup
+-creates Doctrine entity
+
+php app/console doctrine:generate:crud
+-Generating a CRUD Controller Based on a Doctrine Entity
+
+php app/console doctrine:fixtures:load
+- Execute fixtures in bundle
+
+php app/console doctrine:migrations:migrate
+- Execute all migrations
+
+php app/console router:debug
+-Show all routes
+
+php app/console server:run
+-run webserver on localhost:8000
+
+php app/console generate:bundle
+-create bundle
+
+php app/console container:debug
+-show all services
+
+php app/console container:debug security.context
+-shows specific service information
+
+php app/console assets:install
+-Resources/public of each bundle will be copied
+
+php app/console assets:install --symlink
+-Create symlinks to all bundle resources files to public directory
+
+php app/console assetic:dump --env-prod
+
+
+php app/console cache:clear --env=prod
+-Clear cache for production enviroment if we change routing and else
+
+php bin/console debug:config <bundle name>
+-Show available configurations for bundles(service)
+
+php bin/console debug:container --parameters
+-Show all set parameters
+
+php bin/console make:entity
+-Create Entity
+
+php bin/console security:encode-password
+- кешира подадена парола за да може директно да се замисти в БД
+
+git grep genus_show_notes
+-Show all usages of this string
+
+nodejs ./node_modules/@symfony/webpack-encore/bin/encore.js dev --watch
+-компилиране на js
+
+OneToMany  => mappedBy (propertyName to connect)w new ArrayCollection() | Only Getter Methods
+ManyToOne  => inversedBy  (propertyName to connect +s )		       	    | Setter & Getter Methods
+ManyToMany => We need __construct() w new ArrayCollection();            | Only Getter Methods
