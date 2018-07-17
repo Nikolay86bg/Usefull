@@ -1,0 +1,40 @@
+<VirtualHost *:80>
+    ServerName dev.calendar.vm
+
+    DocumentRoot /srv/public
+    DirectoryIndex index.php
+
+    # https://github.com/brandonwamboldt/symfony-app/blob/master/README.md
+    SetEnv SYMFONY_ENV dev
+
+    <Directory /srv/public>
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    <FilesMatch \.php$>
+        SetHandler proxy:fcgi://127.0.0.1:9000
+    </FilesMatch>
+
+    <IfModule mod_rewrite.c>
+        RewriteEngine On
+
+        RewriteCond %{DOCUMENT_ROOT}/maintenance.html -f
+        RewriteCond %{DOCUMENT_ROOT}/.maintenance -f
+        RewriteCond %{SCRIPT_FILENAME} !maintenance.html
+        RewriteRule ^.*$ /maintenance.html [R=503,L]
+        ErrorDocument 503 /maintenance.html
+
+        RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
+        RewriteRule ^(.*) - [E=BASE:%1]
+
+        RewriteCond %{ENV:REDIRECT_STATUS} ^$
+        RewriteRule ^index\.php(/(.*)|$) %{ENV:BASE}/$2 [R=301,L]
+
+        RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME} !-f
+        RewriteRule .? %{ENV:BASE}/index.php [L]
+    </IfModule>
+
+    ErrorLog /var/log/apache2/calendar_error.log
+    CustomLog /var/log/apache2/calendar_access.log combined
+</VirtualHost>
