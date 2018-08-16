@@ -34,6 +34,9 @@ git checkout 696df9579934868319e2c95222d4cd272abd7fb2
 
 git pull --rebase origin master
 
+git push origin :dev_branch
+Delete Branch from repository
+
 php bin/console cache:warmup --env=prod
 
 sudo a2enmod rewrite

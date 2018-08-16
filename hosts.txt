@@ -28,3 +28,9 @@
 127.0.0.1       symfony
 127.0.0.1       interview
 192.168.42.111 dev.calendar.vm
+
+x&e0oj;0%E(1
+
+if($sourcer = User::where('name', 'like', $row->sourcer . "%")->whereIn('role_id', Role::RECRUITER_ROLES)->first()){
+                    $sourcer = User::where('name', 'like', 'Alexander Kolov' . "%")->first();
+                }
