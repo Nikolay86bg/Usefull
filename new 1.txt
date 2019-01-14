@@ -1,5 +1,3 @@
-$this->output->enable_profiler(TRUE);
-
 git init
 git add README.md
 git commit -m "first commit"
@@ -18,6 +16,9 @@ git remote set-url origin https://github.com/Nikolay86bg/symfony34.git
 git config --list
 -show configurations
 
+git grep genus_show_notes
+-Show all usages of this string
+
 git reset --hard HEAD
 
 git rm -r --cached myFolder
@@ -26,8 +27,6 @@ git rm -r --cached myFolder
 ssh-keygen -t rsa -C "nikolay411locals@gmail.com"  //Generirane na ssh key
 
 git reset --hard HEAD && git pull --rebase origin master && composer install && yarn install && yarn build && ./bin/console doctrine:migrations:migrate -n
-
-git reset --hard HEAD && git pull --rebase origin master && composer install && yarn install && ./bin/console doctrine:migrations:migrate -n
 
 git checkout 696df9579934868319e2c95222d4cd272abd7fb2
 - Pull till specific commit (696df9579934868319e2c95222d4cd272abd7fb2 -- commit hash)
@@ -41,16 +40,29 @@ git push origin [name_of_your_new_branch]
 git checkout [name_of_your_new_branch]
 - Change working branch
 
+git branch -d dev_branch
+To delete a local branch
+
 git push origin :dev_branch
 Delete Branch from repository
-
-php bin/console cache:warmup --env=prod
 
 sudo a2enmod rewrite
 - Activate rewrite mode for apache
 
 sudo a2ensite example.com.conf
 - Enable virtual host files for apache (needed when create virtual host files)
+
+nano /etc/php/7.2/fpm/pool.d/www.conf
+- Проблема с IP на localhost, държи постоянно сайта в maintenance mode
+
+sudo service php7.2-fpm start
+Понякога е възможно да забие FPM-a и трябва да се стартира отново
+
+nano /etc/php/7.2/fpm/conf.d/10-opcache.ini
+ и ;zend_extension=opcache.so слагаме коментар
+
+yarn run lint
+yarn add @symfony/webpack-encore --dev
 
 #!/bin/sh
 rm -rfv ~/.PhpStorm201*/
@@ -60,7 +72,7 @@ rm -rfv ~/.java/.userPrefs/jetbrains
 //Merging two branches
 git checkout dev_branch
 git pull --rebase origin master
-git push
+git push origin dev_branch
 git checkout master
 git pull --rebase origin dev_branch
 git push origin master

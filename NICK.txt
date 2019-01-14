@@ -55,6 +55,7 @@ php app/console assets:install --symlink
 
 php app/console assetic:dump --env-prod
 
+php bin/console cache:warmup --env=prod
 
 php app/console cache:clear --env=prod
 -Clear cache for production enviroment if we change routing and else
