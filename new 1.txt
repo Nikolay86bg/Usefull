@@ -35,6 +35,10 @@ git pull --rebase origin master
 
 git checkout -b [name_of_your_new_branch]
 - Create the branch on your local machine
+
+git checkout -b newName origin/master
+- Create new branch on local machine with name newName from master branch
+
 git push origin [name_of_your_new_branch]
 - Push the branch on github
 git checkout [name_of_your_new_branch]
@@ -45,6 +49,12 @@ To delete a local branch
 
 git push origin :dev_branch
 Delete Branch from repository
+
+git commit --amend
+Change Commit Message of last commit Locally
+
+git push --force origin master
+If changed message was pushed to repository to update message there
 
 sudo a2enmod rewrite
 - Activate rewrite mode for apache
@@ -68,6 +78,13 @@ yarn add @symfony/webpack-encore --dev
 rm -rfv ~/.PhpStorm201*/
 rm -rfv ~/.java/.userPrefs/jetbrains
 
+ nano /etc/php/7.2/fpm/conf.d/20-apcu.ini
+ - APCU caching
+
+ sudo a2enmod proxy proxy_http
+ sudo a2enmod proxy proxy_fcgi
+ - IF PHP is not parsed
+
 
 //Merging two branches
 git checkout dev_branch
@@ -79,3 +96,6 @@ git push origin master
 
 Активиране на изкуствен swap
 sudo swapon /var/swap.1
+
+//export from redis to json
+redis-cli hget CRM_RESPONSE:20190403 json > t.json
