@@ -98,4 +98,15 @@ git push origin master
 sudo swapon /var/swap.1
 
 //export from redis to json
-redis-cli hget CRM_RESPONSE:20190403 json > t.json
+redis-cli hget CRM_RESPONSE:20190614 json > CRM_RESPONSE.json
+
+scp nikipenchev@192.168.4.162:/srv/CRM_RESPONSE.json ~/Desktop
+
+//MESSENGER
+sudo systemctl start messenger@users
+sudo systemctl restart messenger@users
+sudo systemctl status messenger@users
+
+./bin/console messenger:consume users -vvv
+
+tail -f /var/log/syslog
