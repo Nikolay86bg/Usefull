@@ -73,6 +73,7 @@ nano /etc/php/7.2/fpm/conf.d/10-opcache.ini
 
 yarn run lint
 yarn add @symfony/webpack-encore --dev
+yarn install --no-bin-links
 
 #!/bin/sh
 rm -rfv ~/.PhpStorm201*/
@@ -95,7 +96,10 @@ git pull --rebase origin dev_branch
 git push origin master
 
 Активиране на изкуствен swap
-sudo swapon /var/swap.1
+sudo fallocate -l 1g /var/swap.swap
+sudo chmod 600 /var/swap.swap
+sudo mkswap /var/swap.swap
+sudo swapon /var/swap.swap
 
 //export from redis to json
 redis-cli hget CRM_RESPONSE:20190614 json > CRM_RESPONSE.json
@@ -110,3 +114,16 @@ sudo systemctl status messenger@users
 ./bin/console messenger:consume users -vvv
 
 tail -f /var/log/syslog
+
+cat ~/.ssh/id_rsa.pub
+//GET PUBLIC KEY
+
+//Fix user right for calendar
+sudo usermod -a -G iliya nikipenchev
+sudo usermod -a -G nikipenchev iliya
+sudo chmod g+rw /srv
+
+
+//Remove/Delete last commit from repository
+git reset --hard HEAD^
+git push origin -f
