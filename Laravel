@@ -13,18 +13,6 @@ php artisan make:controller ArticleController --resource
 php artisan make:resource Article
 
 
-
-'61679'
-'61678'
-'61677'
-'61676'
-'61675'
-'61674'
-'61673'
-'61672'
-'61671'
-
-
 //Commands for interview migration to laravel 5.6
 sudo apt-get install libapache2-mod-php
 
