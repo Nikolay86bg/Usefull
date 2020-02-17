@@ -62,8 +62,9 @@ sudo a2enmod rewrite
 sudo a2ensite example.com.conf
 - Enable virtual host files for apache (needed when create virtual host files)
 
-nano /etc/php/7.2/fpm/pool.d/www.conf
+nano /etc/php/7.4/fpm/pool.d/www.conf
 - Проблема с IP на localhost, държи постоянно сайта в maintenance mode
+- listen = 127.0.0.1:9000
 
 sudo service php7.2-fpm start
 Понякога е възможно да забие FPM-a и трябва да се стартира отново

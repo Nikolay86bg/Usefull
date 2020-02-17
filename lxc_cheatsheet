@@ -1,0 +1,28 @@
+lxc-start -n niki
+lxc-list
+lxc-stop -n niki
+lxc-create -n template -t ubuntu
+lxc-copy -n template -N erp
+lxc-info -n erp
+lxc-attach -n erp
+
+lxc-snapshot ???
+
+
+
+chmod +x install.sh
+
+nano ~/lxc/erp/rootfs/etc/network/interfaces - fix to static
+nano ~/lxc/erp/config - fix IP
+
+echo -e "nameserver 1.1.1.1 \nnameserver 8.8.8.8" > /etc/resolv.conf
+
+nano /etc/php/7.4/fpm/pool.d/www.conf
+- listen = 127.0.0.1:9000
+
+chown -R www-data:www-data .
+
+crontab -e
+@reboot         echo "nameserver 1.1.1.1 \nnameserver 8.8.8.8" > /etc/resolv.conf
+
+nano /etc/resolv.conf

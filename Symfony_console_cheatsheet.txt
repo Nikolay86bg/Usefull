@@ -72,9 +72,6 @@ php bin/console make:entity
 php bin/console security:encode-password
 - кешира подадена парола за да може директно да се замисти в БД
 
-git grep genus_show_notes
--Show all usages of this string
-
 nodejs ./node_modules/@symfony/webpack-encore/bin/encore.js dev --watch
 -компилиране на js
 
