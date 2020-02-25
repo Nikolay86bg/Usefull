@@ -1,9 +1,3 @@
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin https://github.com/Nikolay86bg/symfony34.git
-git push -u origin master
-
 curl -x 192.168.8.115:3128 icanhazip.com
 curl -x 192.168.8.115:3128 httpbin.org/ip
 
@@ -18,6 +12,9 @@ git config --list
 
 git grep genus_show_notes
 -Show all usages of this string
+
+git log --grep="Merge"
+-Show all messages in log with merge string
 
 git reset --hard HEAD
 
@@ -128,3 +125,6 @@ sudo chmod g+rw /srv
 //Remove/Delete last commit from repository
 git reset --hard HEAD^
 git push origin -f
+
+git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
