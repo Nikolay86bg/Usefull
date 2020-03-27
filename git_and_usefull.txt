@@ -77,6 +77,8 @@ yarn install --no-bin-links
 rm -rfv ~/.PhpStorm201*/
 rm -rfv ~/.java/.userPrefs/jetbrains
 
+- https://gitserver.411reports.com/snippets/13
+
  nano /etc/php/7.2/fpm/conf.d/20-apcu.ini
  - APCU caching
 
