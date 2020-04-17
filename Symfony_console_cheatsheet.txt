@@ -75,6 +75,6 @@ php bin/console security:encode-password
 nodejs ./node_modules/@symfony/webpack-encore/bin/encore.js dev --watch
 -компилиране на js
 
-OneToMany  => mappedBy (propertyName to connect)w new ArrayCollection() | Only Getter Methods
-ManyToOne  => inversedBy  (propertyName to connect +s )		       	    | Setter & Getter Methods
+OneToMany  => mappedBy (propertyName to connect)w new ArrayCollection() | GET ADD REMOVE
+ManyToOne  => inversedBy  (propertyName to connect +s )		       	      | GET SET
 ManyToMany => We need __construct() w new ArrayCollection();            | Only Getter Methods

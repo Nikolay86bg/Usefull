@@ -29,3 +29,7 @@ crontab -e
 nano /etc/resolv.conf
 
 ALWAYS CHECK FOR NGINX OR APACHE AND STOP THE OTHER!
+
+IF MYSQL can't connect remotely
+- comment (bind-address = 127.0.0.1) in /etc/mysql/my.cnf
+- service mysql restart
