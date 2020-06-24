@@ -1,0 +1,36 @@
+# Template used to create this container: /usr/share/lxc/templates/lxc-ubuntu
+# Parameters passed to the template:
+# Template script checksum (SHA-1): c2e4e142c5a5b7d033c25e2207bd4c500368e0b7
+# For additional config options, please look at lxc.container.conf(5)
+
+# Uncomment the following line to support nesting containers:
+#lxc.include = /usr/share/lxc/config/nesting.conf
+# (Be aware this has security implications)
+
+#dhcp-range=10.0.0.100,10.0.0.200,12h
+
+
+# Common configuration
+lxc.include = /usr/share/lxc/config/ubuntu.common.conf
+
+# Container specific configuration
+#interface=lxc-bridge-nat
+lxc.arch = amd64
+lxc.mount.entry=/storage/Projects/dashboard/source srv/ none defaults,bind 0,0
+
+# Network configuration
+#lxc.network.type = veth
+#lxc.network.flags = up
+#lxc.network.link = lxcbr0
+
+# Network configuration
+lxc.network.type = veth
+lxc.network.name = eth0
+lxc.network.ipv4.address = 10.0.3.30/24
+lxc.network.ipv4.gateway = 10.0.3.1
+lxc.network.flags = up
+lxc.network.link = lxcbr0
+
+lxc.rootfs = /var/lib/lxc/dashboard/rootfs
+lxc.rootfs.backend = dir
+lxc.utsname = dashboard
