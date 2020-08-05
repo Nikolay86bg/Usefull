@@ -1,0 +1,21 @@
+./mercure --jwt-key='BMWe46' --addr='0.0.0.0:3000' --allow-anonymous --cors-allowed-origins='*'
+
+
+/etc/systemd/system
+
+[Unit]
+Description=Mercure hub
+
+[Service]
+ExecStart=/usr/local/bin/mercure/mercure
+WorkingDirectory=/usr/local/bin/mercure/
+EnvironmentFile=/etc/systemd/system/mercure.service.conf
+Restart=always
+Type=idle
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=Mercure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

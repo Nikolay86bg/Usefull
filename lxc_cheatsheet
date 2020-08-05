@@ -8,7 +8,7 @@ lxc-attach -n erp
 
 lxc-snapshot ???
 
-
+alias lxc-list='echo --RUNNING-- && lxc-ls --fancy --running && echo --STOPPED-- && lxc-ls --fancy --stopped'
 
 chmod +x install.sh
 

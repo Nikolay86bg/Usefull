@@ -3,7 +3,6 @@ curl -x 192.168.8.115:3128 httpbin.org/ip
 
 git remote show origin
 
-git remote set-url origin https://github.com/Nikolay86bg/symfony.git
 git remote set-url origin https://github.com/Nikolay86bg/symfony34.git
 -Change repository
 
@@ -78,6 +77,13 @@ rm -rfv ~/.PhpStorm201*/
 rm -rfv ~/.java/.userPrefs/jetbrains
 
 - https://gitserver.411reports.com/snippets/13
+
+
+rm /home/nikolaynikolov/.config/JetBrains/PhpStorm2020.1/eval/PhpStorm*.evaluation.key
+sed -i '/evlsprt/d' /home/nikolaynikolov/.config/JetBrains/PhpStorm2020.1/options/other.xml
+rm -r /home/nikolaynikolov/.java/.userPrefs/jetbrains/
+sed -i '/JetBrains/d' /home/nikolaynikolov/.java/.userPrefs/prefs.xml
+
 
  nano /etc/php/7.2/fpm/conf.d/20-apcu.ini
  - APCU caching
