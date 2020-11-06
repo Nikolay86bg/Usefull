@@ -1,0 +1,15 @@
+docker-compose exec php php /var/www/html/artisan migrate
+
+docker-compose build && docker-compose up -itd 
+
+docker-compose down
+
+docker exec -it nginx sh
+docker exec -it php sh
+
+winpty docker exec -it //bin//sh ####!!!!!(with git bash)
+
+scp admin2@192.168.20.95:/home/admin2/code/rubyAccountSync/domainsSync.rb C:/xampp/htdocs/domainsSync.rb
+
+
+scp -P 5577 root@192.168.20.15:/root/git/reupload-synchronize/v2_1_reupload.py C:/xampp/htdocs/v2_1_reupload.py

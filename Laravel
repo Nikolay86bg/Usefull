@@ -12,6 +12,9 @@ php artisan make:controller ArticleController --resource
 
 php artisan make:resource Article
 
+php artisan config:cache
+php artisan config:clear
+
 
 //Commands for interview migration to laravel 5.6
 sudo apt-get install libapache2-mod-php
@@ -21,3 +24,55 @@ extension=php_pdo_mysql.dll
 extension=pdo_mysql.so
 
 sudo apt-get install php-mysql
+
+
+--- OneToOne ---
+$page->contact()->save($contact); //hasOne Contact 
+$contact->page()->associate($page)->save(); //belongTo Page
+
+Contact::whereHas('page' , function ($query) use ($link) {
+	return $query->where('slug', '=', $link);
+})->first()
+
+City::with('page')->get()->sortBy('page.name')->pluck('city_name', 'id')
+City::all()->sortBy('page.name')->pluck('city_name', 'id')
+Page::with('city')->get()->sortBy('name')->pluck('name','city.id')
+
+-------------
+$cityPages = DB::table('pages')->select('id','name as city_name','slug as city_slug','is_published as city_is_published');
+$statePages = DB::table('pages')->select('id','name as state_name');
+
+return Casino::with('categories')
+	->join('cities', 'cities.id', '=', 'casinos.city_id')
+	->join('states', 'states.id', '=', 'cities.state_id')
+	->join('pages', 'casinos.page_id', '=', 'pages.id')
+	->joinSub($cityPages, 'city_pages', function ($join) {
+		$join->on('cities.page_id', '=', 'city_pages.id');
+	})
+	->joinSub($statePages, 'state_pages', function ($join) {
+		$join->on('states.page_id', '=', 'state_pages.id');
+	})
+	->where('cities.state_id', '=', $this->id)
+	->get()
+	->toArray();
+-------------------------			
+$cities = Page::join('cities', 'cities.page_id', '=', 'pages.id')
+->join('states', 'states.id', '=', 'cities.state_id')
+->joinSub($statePages, 'state_pages', function ($join) {
+	$join->on('states.page_id', '=', 'state_pages.state_id');
+})
+->select(['cities.id', 'name', 'state_name'])
+->get()
+->toArray();
+
+-------------------------
+Casino::whereHas('page',  function ($query) use ($request) {
+	$query->where('name', 'like', $request->request->get('name').'%');
+})
+	->orderBy('id', 'desc')
+	->paginate(40)
+	->appends('name',$request->request->get('name'))
+;
+
+//смяна версията на php която ползва composer
+/opt/cpanel/ea-php73/root/usr/bin/php /usr/local/bin/composer install
