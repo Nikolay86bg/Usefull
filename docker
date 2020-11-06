@@ -1,15 +1,36 @@
 docker-compose exec php php /var/www/html/artisan migrate
 
-docker-compose build && docker-compose up -itd 
+docker-compose build && docker-compose up -d 
 
 docker-compose down
 
 docker exec -it nginx sh
 docker exec -it php sh
 
-winpty docker exec -it //bin//sh ####!!!!!(with git bash)
+winpty docker exec -it php //bin//sh ####!!!!!(with git bash)
+
+docker run -d -p 9001:9000 -v //var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data --name portainer portainer/portainer-ce
+
 
 scp admin2@192.168.20.95:/home/admin2/code/rubyAccountSync/domainsSync.rb C:/xampp/htdocs/domainsSync.rb
-
-
 scp -P 5577 root@192.168.20.15:/root/git/reupload-synchronize/v2_1_reupload.py C:/xampp/htdocs/v2_1_reupload.py
+
+----------- new symfony project ---
+docker compose file
+
+docker-compose build && docker-compose up -d
+
+winpty docker exec -it symfony_php sh
+
+composer create-project symfony/skeleton
+
+composer install
+
+composer require symfony/orm-pack
+
+composer require --dev symfony/maker-bundle
+
+#in .env
+DATABASE_URL=mysql://root:root@host.docker.internal:3306/projectX?serverVersion=5.7
+
+php bin/console doctrine:database:create
